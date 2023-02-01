@@ -1,27 +1,30 @@
 function sendGetRequest() {
-  var xhrGet = new XMLHttpRequest();
-  var getUrl = document.getElementById("getUrl").value;
-  xhrGet.open("GET", getUrl, true);
-  xhrGet.onreadystatechange = function() {
-    if (xhrGet.readyState === XMLHttpRequest.DONE && xhrGet.status === 200) {
-      var getResponse = xhrGet.responseText;
-      alert("GET Response: " + getResponse);
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", "https://api.example.com/data");
+  xhr.onreadystatechange = function() {
+    if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+      document.getElementById("getResponse").innerHTML = this.responseText;
     }
   };
-  xhrGet.send();
+  xhr.send();
 }
 
 function sendPostRequest() {
-  var xhrPost = new XMLHttpRequest();
-  var postUrl = document.getElementById("postUrl").value;
-  xhrPost.open("POST", postUrl, true);
-  xhrPost.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-  xhrPost.onreadystatechange = function() {
-    if (xhrPost.readyState === XMLHttpRequest.DONE && xhrPost.status === 200) {
-      var postResponse = xhrPost.responseText;
-      alert("POST Response: " + postResponse);
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "https://api.example.com/data");
+  xhr.setRequestHeader("Content-Type", "application/json");
+  xhr.onreadystatechange = function() {
+    if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+      document.getElementById("postResponse").innerHTML = this.responseText;
     }
   };
-  var postData = document.getElementById("postData").value;
-  xhrPost.send(postData);
+  xhr.send(JSON.stringify({ key: "value" }));
+}
+
+function clearGetResponse() {
+  document.getElementById("getResponse").innerHTML = "";
+}
+
+function clearPostResponse() {
+  document.getElementById("postResponse").innerHTML = "";
 }
