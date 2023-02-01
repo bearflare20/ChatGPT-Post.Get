@@ -1,19 +1,18 @@
-<!DOCTYPE html>
 <html>
   <head>
-    <title>API Request Example</title>
+    <script src="script.js"></script>
   </head>
   <body>
-    <form>
-      <h3>GET Request</h3>
-      <label>URL: <input type="text" id="getUrl" value="https://api.example.com/get-data"></label>
-      <button type="button" onclick="sendGetRequest()">Submit GET Request</button>
-      <br><br>
-      <h3>POST Request</h3>
-      <label>URL: <input type="text" id="postUrl" value="https://api.example.com/post-data"></label>
-      <label>Data: <input type="text" id="postData" value="param1=value1&param2=value2"></label>
-      <button type="button" onclick="sendPostRequest()">Submit POST Request</button>
-    </form>
-    <script src="script.js"></script>
+    <button type="button" onclick="sendGetRequest()">Send GET Request</button>
+    <br><br>
+    <button type="button" onclick="sendPostRequest()">Send POST Request</button>
+    <br><br>
+    <button type="button" onclick="clearGetResponse()">Clear GET Response</button>
+    <br><br>
+    <button type="button" onclick="clearPostResponse()">Clear POST Response</button>
+    <br><br>
+    <div id="getResponse"></div>
+    <br><br>
+    <div id="postResponse"></div>
   </body>
 </html>
