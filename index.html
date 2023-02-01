@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>API Request Example</title>
+  </head>
+  <body>
+    <form>
+      <h3>GET Request</h3>
+      <label>URL: <input type="text" id="getUrl" value="https://api.example.com/get-data"></label>
+      <button type="button" onclick="sendGetRequest()">Submit GET Request</button>
+      <br><br>
+      <h3>POST Request</h3>
+      <label>URL: <input type="text" id="postUrl" value="https://api.example.com/post-data"></label>
+      <label>Data: <input type="text" id="postData" value="param1=value1&param2=value2"></label>
+      <button type="button" onclick="sendPostRequest()">Submit POST Request</button>
+    </form>
+    <script src="script.js"></script>
+  </body>
+</html>
