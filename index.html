@@ -1,18 +1,57 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <script src="script.js"></script>
+    <title>API Requests</title>
   </head>
   <body>
-    <button type="button" onclick="sendGetRequest()">Send GET Request</button>
+    <h1>API Requests</h1>
+    <input type="text" id="url-input" value="https://api.example.com/data">
     <br><br>
-    <button type="button" onclick="sendPostRequest()">Send POST Request</button>
+    <button id="get-button">Send GET Request</button>
+    <button id="post-button">Send POST Request</button>
     <br><br>
-    <button type="button" onclick="clearGetResponse()">Clear GET Response</button>
+    <textarea id="response-text" rows="10" cols="50"></textarea>
     <br><br>
-    <button type="button" onclick="clearPostResponse()">Clear POST Response</button>
-    <br><br>
-    <div id="getResponse"></div>
-    <br><br>
-    <div id="postResponse"></div>
+    <button id="clear-button">Clear Response</button>
+    <button id="copy-button">Copy Response</button>
+    <script>
+      const getButton = document.getElementById("get-button");
+      const postButton = document.getElementById("post-button");
+      const responseText = document.getElementById("response-text");
+      const clearButton = document.getElementById("clear-button");
+      const copyButton = document.getElementById("copy-button");
+      const urlInput = document.getElementById("url-input");
+
+      getButton.addEventListener("click", function() {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", urlInput.value);
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState === XMLHttpRequest.DONE) {
+            responseText.value = xhr.responseText;
+          }
+        };
+        xhr.send();
+      });
+
+      postButton.addEventListener("click", function() {
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", urlInput.value);
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState === XMLHttpRequest.DONE) {
+            responseText.value = xhr.responseText;
+          }
+        };
+        xhr.send();
+      });
+
+      clearButton.addEventListener("click", function() {
+        responseText.value = "";
+      });
+
+      copyButton.addEventListener("click", function() {
+        responseText.select();
+        document.execCommand("copy");
+      });
+    </script>
   </body>
 </html>
