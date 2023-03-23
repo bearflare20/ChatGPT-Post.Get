@@ -1,33 +1,42 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<title>API Request</title>
-	<link rel="stylesheet" href="styles.css">
-</head>
-<body>
-	<div class="container">
-		<h1>API Request</h1>
-		<div class="options">
-			<button class="option-btn" id="get-btn" onclick="toggleOptions('get')">GET</button>
-			<button class="option-btn" id="post-btn" onclick="toggleOptions('post')">POST</button>
-		</div>
-		<div class="input-fields">
-			<label for="url-input">Enter URL:</label>
-			<input type="text" id="url-input" placeholder="https://example.com/api">
-			<div id="post-options" style="display:none">
-				<label for="data-input">Enter POST data:</label>
-				<textarea id="data-input" placeholder="Enter JSON data here"></textarea>
-			</div>
-			<button id="send-btn" onclick="sendRequest()">Send Request</button>
-			<button id="clear-btn" onclick="clearResponse()">Clear Response</button>
-			<button id="copy-btn" onclick="copyResponse()">Copy Response</button>
-		</div>
-		<div class="response">
-			<h2>Response:</h2>
-			<pre id="response-box"></pre>
-		</div>
-	</div>
-	<script src="script.js"></script>
-</body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ChatGPT API Request</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>API Request</h1>
+      <div class="form-container">
+        <form>
+          <label>Request Type:</label>
+          <div class="switch">
+            <input type="radio" id="get" name="request-type" value="get" checked />
+            <label for="get">GET</label>
+            <input type="radio" id="post" name="request-type" value="post" />
+            <label for="post">POST</label>
+          </div>
+          <div class="url-container">
+            <label for="url">URL:</label>
+            <input type="text" id="url" name="url" placeholder="Enter URL" required />
+          </div>
+          <div class="post-container hidden">
+            <label for="payload">Payload:</label>
+            <textarea id="payload" name="payload" placeholder="Enter JSON payload"></textarea>
+          </div>
+          <button type="submit">Send Request</button>
+        </form>
+      </div>
+      <div class="response-container">
+        <label>Response:</label>
+        <div id="response"></div>
+        <div class="button-container">
+          <button id="copy-btn">Copy Response</button>
+          <button id="clear-btn">Clear Response</button>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
 </html>
