@@ -1,57 +1,33 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>API Requests</title>
-  </head>
-  <body>
-    <h1>API Requests</h1>
-    <input type="text" id="url-input" value="https://api.example.com/data">
-    <br><br>
-    <button id="get-button">Send GET Request</button>
-    <button id="post-button">Send POST Request</button>
-    <br><br>
-    <textarea id="response-text" rows="10" cols="50"></textarea>
-    <br><br>
-    <button id="clear-button">Clear Response</button>
-    <button id="copy-button">Copy Response</button>
-    <script>
-      const getButton = document.getElementById("get-button");
-      const postButton = document.getElementById("post-button");
-      const responseText = document.getElementById("response-text");
-      const clearButton = document.getElementById("clear-button");
-      const copyButton = document.getElementById("copy-button");
-      const urlInput = document.getElementById("url-input");
-
-      getButton.addEventListener("click", function() {
-        const xhr = new XMLHttpRequest();
-        xhr.open("GET", urlInput.value);
-        xhr.onreadystatechange = function() {
-          if (xhr.readyState === XMLHttpRequest.DONE) {
-            responseText.value = xhr.responseText;
-          }
-        };
-        xhr.send();
-      });
-
-      postButton.addEventListener("click", function() {
-        const xhr = new XMLHttpRequest();
-        xhr.open("POST", urlInput.value);
-        xhr.onreadystatechange = function() {
-          if (xhr.readyState === XMLHttpRequest.DONE) {
-            responseText.value = xhr.responseText;
-          }
-        };
-        xhr.send();
-      });
-
-      clearButton.addEventListener("click", function() {
-        responseText.value = "";
-      });
-
-      copyButton.addEventListener("click", function() {
-        responseText.select();
-        document.execCommand("copy");
-      });
-    </script>
-  </body>
+<head>
+	<meta charset="UTF-8">
+	<title>API Request</title>
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	<div class="container">
+		<h1>API Request</h1>
+		<div class="options">
+			<button class="option-btn" id="get-btn" onclick="toggleOptions('get')">GET</button>
+			<button class="option-btn" id="post-btn" onclick="toggleOptions('post')">POST</button>
+		</div>
+		<div class="input-fields">
+			<label for="url-input">Enter URL:</label>
+			<input type="text" id="url-input" placeholder="https://example.com/api">
+			<div id="post-options" style="display:none">
+				<label for="data-input">Enter POST data:</label>
+				<textarea id="data-input" placeholder="Enter JSON data here"></textarea>
+			</div>
+			<button id="send-btn" onclick="sendRequest()">Send Request</button>
+			<button id="clear-btn" onclick="clearResponse()">Clear Response</button>
+			<button id="copy-btn" onclick="copyResponse()">Copy Response</button>
+		</div>
+		<div class="response">
+			<h2>Response:</h2>
+			<pre id="response-box"></pre>
+		</div>
+	</div>
+	<script src="script.js"></script>
+</body>
 </html>
